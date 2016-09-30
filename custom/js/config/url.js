@@ -1,3 +1,4 @@
 var url = {
-	auth: '/auth'
+	auth: '/auth',
+	login:'/login'
 };

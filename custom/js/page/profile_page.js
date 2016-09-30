@@ -8,7 +8,8 @@ $.ajax({
 		'Content-Type' : 'application/json',
 		'X-Auth-Token' : localStorage.userToken
 	},
-	success: function() {
+	success: function(data) {
+		alert("cities : " + JSON.stringify( data ));
 		$(document).ready(function() {
         });
 	},      
