@@ -8,6 +8,7 @@ $(document).ready(function() {
 		var username = $('#username').val();
 		var password = $('#password').val();
 		var loginData = JSON.stringify({username: username, password: password});
+		alert(loginData);
 		$.ajax({
 			url: authUrl,
 			type: "POST",
@@ -23,7 +24,7 @@ $(document).ready(function() {
 			},
 			error : function(data,status,er){
 				alert(JSON.stringify(data));
-				location.href = "page_500.html"
+				//location.href = "page_500.html"
 			}
 		});
 	});
@@ -47,7 +48,7 @@ $(document).ready(function() {
 				location.href = "profile_page.html"
 			},
 			error : function(data,status,er){
-				location.href = "page_500.html"
+				//location.href = "page_500.html"
 			}
 		});
 	});

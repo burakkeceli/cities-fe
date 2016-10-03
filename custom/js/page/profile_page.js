@@ -9,10 +9,15 @@ $.ajax({
 		'X-Auth-Token' : localStorage.userToken
 	},
 	success: function(data) {
-		alert("cities : " + JSON.stringify( data ));
 		$(document).ready(function() {
+			var showName = $('#show-name');
+			var nameSurname = '';
+			$.each(data, function (index, value) {
+		        nameSurname += value + " ";
+		    });
+		    showName.append(nameSurname);
         });
-	},      
+	},
 	error : function(data,status,er){
 		alert(JSON.stringify( data ))
 		location.href = "page_500.html"
