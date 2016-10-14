@@ -1,4 +1,5 @@
-var urlBase = "http://localhost:8080/city/liked";
+var urlBase = config.urlBase + city.liked;
+alert("city liked : " +urlBase);
 $.ajax({
 	url: urlBase,
 	type: "GET",
@@ -20,6 +21,5 @@ $.ajax({
 	},
 	error : function(data,status,er){
 		alert(JSON.stringify( data ))
-		location.href = "page_500.html"
 	}
 });
