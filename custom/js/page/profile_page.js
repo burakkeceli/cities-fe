@@ -1,5 +1,4 @@
 var urlBase = config.urlBase + city.liked;
-alert("city liked : " +urlBase);
 $.ajax({
 	url: urlBase,
 	type: "GET",

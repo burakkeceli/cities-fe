@@ -5,7 +5,8 @@ var url = {
 
 var friendShip = '/user/friend';
 var friendShip = {
-	request: friendShip + '/request'
+	request: friendShip + '/request',
+	accept: friendShip
 };
 
 var cityUrl = '/city';
