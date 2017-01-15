@@ -1,6 +1,6 @@
 var url = {
-	auth: '/auth',
-	login:'/login'
+	auth: '/login',
+	login:'/register'
 };
 
 var friendShip = '/user/friend';
