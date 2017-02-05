@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "cities-fe",
   "version": "0.0.0",
-  "description": "Modular starter project for Angular 2 (and beyond) with statically typed build and AoT compilation",
+  "description": "City search project front-end with statically typed build and AoT compilation",
   "repository": {
-    "url": "https://github.com/mgechev/angular-seed"
+    "url": "https://bitbucket.org/965/cities-fe"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
@@ -43,7 +43,7 @@
     "compodoc": "node_modules/.bin/compodoc -p src/client/tsconfig.json",
     "serve.compodoc": "node_modules/.bin/compodoc -s"
   },
-  "author": "Minko Gechev <mgechev>",
+  "author": "Murat Guvenc, Burak Keceli",
   "license": "MIT",
   "devDependencies": {
     "@angular/compiler-cli": "~2.4.0",
