@@ -1,10 +1,13 @@
-<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
-
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
-  <button type="submit">Add</button>
+<form (submit)="searchCity()">
+  <input [(ngModel)]="cityName" name="cityName" placeholder="Exp. Barcelona, Berlin, İstanbul...">
+  <button type="submit">Search</button>
 </form>
 
+<div *ngIf="searchResult.name">
+  <h1>{{searchResult.name}}</h1>
+  <p>Country : {{searchResult.country.name}}</p>
+</div>
+
 <ul>
-  <li *ngFor="let name of names">{{name}}</li>
+  <li *ngFor="let city of cities"></li>
 </ul>
