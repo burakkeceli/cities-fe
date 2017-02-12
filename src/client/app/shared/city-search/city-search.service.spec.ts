@@ -31,7 +31,7 @@ export function main() {
       expect(TestBed.get(CitySearchService).get()).toEqual(jasmine.any(Observable));
     }));
 
-    it('should resolve to list of names when get called', async(() => {
+    it('should resolve to list of cities when get called', async(() => {
       let citySearchService = TestBed.get(CitySearchService);
       let mockBackend = TestBed.get(MockBackend);
 

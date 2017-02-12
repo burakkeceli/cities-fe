@@ -29,6 +29,17 @@ export class CitySearchService {
                     .catch(this.handleError);
     return this.cities;
   }
+
+  getCity(cityId: string): Observable<string> {
+    console.log(cityId);
+    console.log(typeof cityId);
+    let uri = 'http://localhost:8081/cities/city/'+cityId;
+    return this._http.get(uri)
+                    .map((res: Response) => res.json())
+    //              .do(data => console.log('server data:', data))  // debug
+                    .catch(this.handleError);
+    
+  }
 /*
   search(): string{
     return 
