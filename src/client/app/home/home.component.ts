@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { CitySearchService } from '../shared/city-search/city-search.service';
+import { CityComponent } from '../city/city.component';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   errorMessage: string;
   names: any[] = [];
   cities: any[] = [];
-  searchResult: any = {
+  fetchedCity: any = {
     country:{}
   };
 
@@ -54,7 +55,7 @@ export class HomeComponent implements OnInit {
         if(city.name.toUpperCase() === this.cityName.toUpperCase()){
           this.citySearchService.getCity(city.id)
              .subscribe(
-                searchResult => this.searchResult = searchResult,
+                fetchedCity => this.fetchedCity = fetchedCity,
                 error => this.errorMessage = <any>error
              );
         }
