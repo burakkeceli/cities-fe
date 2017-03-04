@@ -1,7 +1,3 @@
 <p><strong>City</strong> : {{fetchedCity.name}}</p>
 <p><strong>Country id</strong> : {{fetchedCity.countryId}}</p>
-<button (click)="onClick()">Click to see country flag</button>
-
-<!--<div *ngIf="fetchedCountry.name">
-    <img [src]="fetchedCountry.iconFlag">
-</div>-->
+<img [src]="fetchedCountry.smallFlag">

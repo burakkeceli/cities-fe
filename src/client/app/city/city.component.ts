@@ -9,13 +9,13 @@ import { CountrySearchService } from '../shared/country/search/country-search.se
   moduleId: module.id,
   selector: 'cities-city',
   templateUrl: 'city.component.html',
-  inputs: [`fetchedCity`]
+  inputs: [`fetchedCity`, `fetchedCountry`]
 })
 export class CityComponent {
-  public fetchedCity : any;
-  public fetchedCountry : any;
+  private fetchedCity : any;
+  private fetchedCountry : any;
 
-  constructor(public countrySearchService: CountrySearchService) {}
+  constructor(private countrySearchService: CountrySearchService) {}
 
   onClick() {
     this.countrySearchService.getCountry(this.fetchedCity.countryId)

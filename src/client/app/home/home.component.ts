@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { CitySearchService } from '../shared/city-search/city-search.service';
 import { CityComponent } from '../city/city.component';
+import { CountrySearchService } from '../shared/country/search/country-search.service';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -14,14 +15,13 @@ import { CityComponent } from '../city/city.component';
 })
 export class HomeComponent implements OnInit {
 
-  cityName: string = '';
-  newName: string = '';
-  errorMessage: string;
-  names: any[] = [];
-  cities: any[] = [];
-  fetchedCity: any = {
-    country:{}
-  };
+  private cityName: string = '';
+  private newName: string = '';
+  private errorMessage: string;
+  private names: any[] = [];
+  private cities: any[] = [];
+  private fetchedCity: any = {};
+  private fetchedCountry: any = {};
 
   /**
    * Creates an instance of the HomeComponent with the injected
@@ -29,8 +29,9 @@ export class HomeComponent implements OnInit {
    *
    * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor(public nameListService: NameListService,
-              public citySearchService: CitySearchService) {}
+  constructor(private nameListService: NameListService,
+              private citySearchService: CitySearchService,
+              private countrySearchService: CountrySearchService) {}
 
   /**
    * Get the names OnInit
@@ -49,16 +50,33 @@ export class HomeComponent implements OnInit {
         error  => this.errorMessage = <any>error
       );
   }
-
+  
   searchCity() {
     this.cities.forEach( (city) => {
-        if(city.name.toUpperCase() === this.cityName.toUpperCase()){
-          this.citySearchService.getCity(city.id)
-             .subscribe(
-                fetchedCity => this.fetchedCity = fetchedCity,
-                error => this.errorMessage = <any>error
-             );
-        }
+      if(city.name.toUpperCase() === this.cityName.toUpperCase()) {
+        this.getCity(city.id);
+      }
     });
+  }
+
+  getCity(cityId : string) {
+    this.citySearchService.getCity(cityId)
+    .subscribe(
+      fetchedCity => {
+        this.fetchedCity = fetchedCity,
+        this.getCountry(this.fetchedCity.countryId);
+      },
+      error => this.errorMessage = <any>error
+    );
+  }
+
+  getCountry(countryId : string) {
+    this.countrySearchService.getCountry(countryId)
+    .subscribe(
+      fetchedCountry => {
+        this.fetchedCountry = fetchedCountry;
+      },
+      error => this.errorMessage = <any>error
+    );
   }
 }

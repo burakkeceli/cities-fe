@@ -30,8 +30,6 @@ export class CitySearchService {
   }
 
   getCity(cityId: string): Observable<string> {
-    console.log(cityId);
-    console.log(typeof cityId);
     let uri = 'http://localhost:8081/cities/city/'+cityId;
     return this._http.get(uri)
                     .map((res: Response) => res.json())
