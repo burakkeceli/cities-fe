@@ -16,19 +16,11 @@ import { CountrySearchService } from '../shared/country/search/country-search.se
 export class HomeComponent implements OnInit {
 
   private cityName: string = '';
-  private newName: string = '';
   private errorMessage: string;
-  private names: any[] = [];
   private cities: any[] = [];
   private fetchedCity: any = {};
   private fetchedCountry: any = {};
 
-  /**
-   * Creates an instance of the HomeComponent with the injected
-   * NameListService.
-   *
-   * @param {NameListService} nameListService - The injected NameListService.
-   */
   constructor(private nameListService: NameListService,
               private citySearchService: CitySearchService,
               private countrySearchService: CountrySearchService) {}
@@ -43,7 +35,7 @@ export class HomeComponent implements OnInit {
   /**
    * Handle the citySearchService observable
    */
-  getCities(){
+  getCities() {
     this.citySearchService.get()
       .subscribe(
         cities => this.cities = cities,
@@ -52,18 +44,18 @@ export class HomeComponent implements OnInit {
   }
   
   searchCity() {
-    this.cities.forEach( (city) => {
-      if(city.name.toUpperCase() === this.cityName.toUpperCase()) {
-        this.getCity(city.id);
+    this.cities.forEach((city) => {
+      if (city.name.toUpperCase() === this.cityName.toUpperCase()) {
+        this.getCityDetails(city.id);
       }
     });
   }
 
-  getCity(cityId : string) {
+  getCityDetails(cityId : string) {
     this.citySearchService.getCity(cityId)
     .subscribe(
       fetchedCity => {
-        this.fetchedCity = fetchedCity,
+        this.fetchedCity = fetchedCity;
         this.getCountry(this.fetchedCity.countryId);
       },
       error => this.errorMessage = <any>error

@@ -16,8 +16,6 @@ export class CountrySearchService {
   constructor(private _http: Http) {}
 
   getCountry(countryId: string): Observable<string> {
-    console.log(countryId);
-    console.log(typeof countryId);
     let uri = 'http://localhost:8081/cities/country/'+countryId;
     return this._http.get(uri)
                     .map((res: Response) => res.json())
