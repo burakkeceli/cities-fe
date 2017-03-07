@@ -1,42 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/do';  // for debugging
 
 /**
- * This class provides the CitySearch service with methods to read names and add names.
+ * This class provides the CountrySearch service with methods to read names and add names.
  */
 @Injectable()
-export class CitySearchService {
-
-  private cities: Observable<string[]>;
+export class CountrySearchService {
 
   /**
-   * Creates a new CitySearchService with the injected Http.
+   * Creates a new CountrySearchService with the injected Http.
    * @param {Http} http - The injected Http.
    * @constructor
    */
   constructor(private _http: Http) {}
 
-  /**
-   * Returns an Observable for the HTTP GET request for the JSON resource.
-   * @return {string[]} The Observable for the HTTP request.
-   */
-  get(): Observable<string[]> {
-    this.cities = this._http.get('http://localhost:8081/cities/city')
-                    .map((res: Response) => res.json())
-                    .catch(this.handleError);
-    return this.cities;
-  }
-
-  getCity(cityId: string): Observable<string> {
-    let uri = 'http://localhost:8081/cities/city/'+cityId;
+  getCountry(countryId: string): Observable<string> {
+    let uri = 'http://localhost:8081/cities/country/'+countryId;
     return this._http.get(uri)
                     .map((res: Response) => res.json())
                     .catch(this.handleError);
     
   }
-
   /**
     * Handle HTTP error
     */

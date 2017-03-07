@@ -5,9 +5,8 @@
   </div>
 </form>
 
-<div *ngIf="searchResult.name">
-  <p><strong>City</strong> : {{searchResult.name}}</p>
-  <p><strong>Country</strong> : {{searchResult.country.name}}</p>
+<div *ngIf="fetchedCity.name">
+  <cities-city [fetchedCity]="fetchedCity" [fetchedCountry]="fetchedCountry"></cities-city>
 </div>
 
 <ul>
