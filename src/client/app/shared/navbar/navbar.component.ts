@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 /**
  * This class represents the navigation bar component.
@@ -9,4 +9,15 @@ import { Component } from '@angular/core';
   templateUrl: 'navbar.component.html',
   styleUrls: ['navbar.component.css'],
 })
-export class NavbarComponent { }
+export class NavbarComponent implements OnInit {
+    private userLoggedIn: boolean;
+
+    ngOnInit() {
+      let currentUser = localStorage.getItem('currentUser');
+      if (currentUser != null) {
+        this.userLoggedIn = true;
+      } else {
+        this.userLoggedIn = false;
+      }
+    }
+}

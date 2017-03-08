@@ -1,3 +1,8 @@
+<div *ngIf="currentUser">
+  <p>Hello {{currentUser.username}}</p>
+  <p>Which city you want to search?</p>
+</div>
+
 <form (submit)="searchCity()">
   <div>
     <input [(ngModel)]="cityName" name="cityName" placeholder="Exp. Barcelona, Berlin, İstanbul...">
