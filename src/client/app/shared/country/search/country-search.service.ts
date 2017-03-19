@@ -8,11 +8,6 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class CountrySearchService {
 
-  /**
-   * Creates a new CountrySearchService with the injected Http.
-   * @param {Http} http - The injected Http.
-   * @constructor
-   */
   constructor(private _http: Http) {}
 
   getCountry(countryId: string): Observable<string> {
@@ -22,9 +17,7 @@ export class CountrySearchService {
                     .catch(this.handleError);
     
   }
-  /**
-    * Handle HTTP error
-    */
+  
   private handleError (error: any) {
     // In a real world app, we might use a remote logging infrastructure
     // We'd also dig deeper into the error to get a better message

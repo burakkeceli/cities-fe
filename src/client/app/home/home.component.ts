@@ -3,6 +3,7 @@ import { NameListService } from '../shared/name-list/name-list.service';
 import { CitySearchService } from '../shared/city-search/city-search.service';
 import { CityComponent } from '../city/city.component';
 import { CountrySearchService } from '../shared/country/search/country-search.service';
+import { User } from '../model/user';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   private cities: any[] = [];
   private fetchedCity: any = {};
   private fetchedCountry: any = {};
+  private currentUser: User;
 
   constructor(private nameListService: NameListService,
               private citySearchService: CitySearchService,
@@ -30,6 +32,10 @@ export class HomeComponent implements OnInit {
    */
   ngOnInit() {
     this.getCities();
+    let currentUser = localStorage.getItem('currentUser');
+    if (currentUser != null) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    }
   }
 
   /**
