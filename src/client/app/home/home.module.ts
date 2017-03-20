@@ -11,6 +11,6 @@ import { CountrySearchService } from '../shared/country/search/country-search.se
   imports: [HomeRoutingModule, SharedModule, CityModule],
   declarations: [HomeComponent],
   exports: [HomeComponent],
-  providers: [NameListService, CitySearchService, CountrySearchService]
+  providers: [NameListService]
 })
 export class HomeModule { }

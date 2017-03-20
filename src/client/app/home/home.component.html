@@ -17,3 +17,17 @@
 <ul>
   <li *ngFor="let city of cities"></li>
 </ul>
+
+<table>
+	<template let-group ngFor [ngForOf]="cityComments">
+	<tr *ngFor="let row of group.cityId">{{row}}</tr>
+	</template>
+</table>
+
+<div *ngIf="currentUser && fetchedCity.name">
+  <h2>Add your comment</h2>
+  <form #commentForm="ngForm" (ngSubmit)="addComment()">
+    <textarea name="commentText" [(ngModel)] = "commentText"></textarea>
+    <button type="submit" class='btn btn-primary'>Submit</button>
+  </form>
+</div>

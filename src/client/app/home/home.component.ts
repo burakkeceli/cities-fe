@@ -3,6 +3,7 @@ import { NameListService } from '../shared/name-list/name-list.service';
 import { CitySearchService } from '../shared/city-search/city-search.service';
 import { CityComponent } from '../city/city.component';
 import { CountrySearchService } from '../shared/country/search/country-search.service';
+import { CommentService } from '../shared/comment/comment.service';
 import { User } from '../model/user';
 
 /**
@@ -22,10 +23,13 @@ export class HomeComponent implements OnInit {
   private fetchedCity: any = {};
   private fetchedCountry: any = {};
   private currentUser: User;
+  private cityComments: any;
+  private commentText: string;
 
   constructor(private nameListService: NameListService,
               private citySearchService: CitySearchService,
-              private countrySearchService: CountrySearchService) {}
+              private countrySearchService: CountrySearchService,
+              private commentService: CommentService) {}
 
   /**
    * Get the names OnInit
@@ -63,6 +67,7 @@ export class HomeComponent implements OnInit {
       fetchedCity => {
         this.fetchedCity = fetchedCity;
         this.getCountry(this.fetchedCity.countryId);
+        this.getComments(this.fetchedCity.id);
       },
       error => this.errorMessage = <any>error
     );
@@ -76,5 +81,26 @@ export class HomeComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
     );
+  }
+
+  getComments(cityId : string) {
+    this.commentService.getCommentsOfCity(cityId)
+    .subscribe(
+      cityComments => {
+        this.cityComments = cityComments;
+        console.log(this.cityComments);
+      },
+      error => this.errorMessage = <any>error
+    );
+  }
+
+  addComment() {
+    console.log(this.currentUser + " " + this.fetchedCity.id + " " + this.commentText);
+    this.commentService.addCommentToCity(this.currentUser, this.fetchedCity.id, this.commentText)
+    .subscribe(
+      result => {
+        this.getComments(this.fetchedCity.id);
+      }
+    )
   }
 }

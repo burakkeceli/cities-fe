@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NameListService } from './name-list/name-list.service';
 import { CitySearchService } from './city-search/city-search.service';
 import { CountrySearchService } from '../shared/country/search/country-search.service';
+import { CommentService } from '../shared/comment/comment.service';
 import { AuthenticationService } from '../shared/authentication/authentication.service';
 
 /**
@@ -24,7 +25,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [NameListService, CitySearchService, CountrySearchService, AuthenticationService]
+      providers: [NameListService, CitySearchService, CountrySearchService, CommentService, AuthenticationService]
     };
   }
 }
