@@ -1,0 +1,47 @@
+<div class="row">
+	<div class="panel-group" id="accordion">
+		<ul class="panel panel-default list-group-item" *ngFor="let city of cities">
+			<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{city.id}}">{{city.name}}</a>
+			<ul id="collapse{{city.id}}" class="panel-collapse collapse list-unstyled">
+				<div class="row">
+					<div class="col-md-3">
+						<li>
+							<div>
+								<a [routerLink]="['/city-general', city.id]">
+									<img src="/assets/icon/general-1.png" style="width:32px;height:32px;">
+								</a>
+							</div>
+						</li>
+					</div>
+					<div class="col-md-3">
+						<li>
+							<div>
+								<a [routerLink]="['/city-general', city.id]">
+									<img src="/assets/icon/event-3.png" style="width:32px;height:32px;">
+								</a>
+							</div>
+						</li>
+					</div>
+					<div class="col-md-3">
+						<li>
+							<div>
+								<a [routerLink]="['/city-general', city.id]">
+									<img src="/assets/icon/sight-seeing-1.png" style="width:32px;height:32px;">
+								</a>
+							</div>
+						</li>
+					</div>
+					<div class="col-md-3">
+						<li>
+							<div>
+								<a [routerLink]="['/city-general', city.id]">
+									<img src="/assets/icon/restaurant-1.png" style="width:32px;height:32px;">
+								</a>
+							</div>
+						</li>
+					</div>
+				</div>
+			</ul>
+		</ul>
+	</div>
+</div>

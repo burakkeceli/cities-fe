@@ -1,0 +1,57 @@
+.container-fluid {
+    height: 100%;
+}
+
+.navbar-nav > li > a, .navbar-brand{
+    padding-top:4px !important;
+    padding-bottom:0 !important;
+    height: 15px;
+}
+
+#header-search, #header-search-form, #header-search-input, #header-search-form, #header-search-button {
+    height: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#header-search-button {
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+}
+
+.navbar {min-height:28px !important;}
+
+#navbarRow {
+    height: 100%;
+    min-height:15px !important;
+}
+
+#nestedNavbarRow {
+}
+
+#nestedOuterNavbarRow {
+    height: 100%;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+#navbar-main {
+}
+
+#header-search {
+    width: 50%;
+}
+
+#header-login {
+}
+
+#header-search-form {
+}
+
+#header-search-input {
+    width: 70%;
+}
+
+#sideBar {
+    background-color: rebeccapurpleZ
+}

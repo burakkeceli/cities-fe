@@ -1,0 +1,12 @@
+<div *ngIf="isDataAvailable">
+	<div class="row">
+	<div class="col-md-4">
+		<p><strong>City name</strong> : {{fetchedCity.name}}</p>
+		<p><strong>Country id</strong> : {{fetchedCity.countryId}}</p>
+	</div>
+	<div class="col-md-6"></div>
+	<div class="col-md-2">
+		<img [src]="fetchedCountry.smallFlag">
+	</div>
+	</div>
+</div>

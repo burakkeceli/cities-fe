@@ -1,0 +1,18 @@
+<div class="row">
+  <form (submit)="searchCity()">
+    <div>
+      <input class="form-control" [(ngModel)]="cityName" name="cityName" placeholder="Exp. Barcelona, Berlin, İstanbul...">
+
+      <button class="btn btn-primary" type="submit" btnCheckbox btnCheckboxTrue="1" btnCheckboxFalse="0">Search</button>
+    </div>
+  </form>
+</div>
+
+<div class="row">
+  <alert type="success">
+    <strong>Well done!</strong> You successfully read this important alert message.
+  </alert>
+  <alert type="danger">
+    <strong>Oh snap!</strong> Change a few things up and try submitting again.
+  </alert>
+</div>
