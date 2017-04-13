@@ -28,6 +28,10 @@ var CityGeneralComponent = (function () {
             _this.cityId = params['cityId'];
             console.log("city id " + _this.cityId);
             _this.getCityDetails(_this.cityId);
+            var currentUser = localStorage.getItem('currentUser');
+            if (currentUser != null) {
+                _this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            }
         });
     };
     CityGeneralComponent.prototype.getCityDetails = function (cityId) {
@@ -52,9 +56,18 @@ var CityGeneralComponent = (function () {
         var _this = this;
         this.commentService.getCommentsOfCity(cityId)
             .subscribe(function (cityComments) {
-            _this.cityComments = cityComments;
-            console.log(_this.cityComments);
+            console.log("comments fetched : " + cityComments);
+            _this.cityCommentList = JSON.parse(cityComments);
+            console.log("comments : " + _this.cityComments);
         }, function (error) { return _this.errorMessage = error; });
+    };
+    CityGeneralComponent.prototype.addComment = function () {
+        var _this = this;
+        console.log(this.currentUser + " " + this.fetchedCity.id + " " + this.commentText);
+        this.commentService.addCommentToCity(this.currentUser, this.fetchedCity.id, this.commentText)
+            .subscribe(function (result) {
+            _this.getComments(_this.fetchedCity.id);
+        });
     };
     return CityGeneralComponent;
 }());

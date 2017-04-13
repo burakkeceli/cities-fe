@@ -9,4 +9,19 @@
 		<img [src]="fetchedCountry.smallFlag">
 	</div>
 	</div>
+
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-6">
+			<div *ngIf="currentUser && fetchedCity.name">
+				<form #commentForm="ngForm" (ngSubmit)="addComment()">
+				<div class="form-group">
+					<textarea class="form-control" rows="5" id="comment" name="commentText" [(ngModel)] = "commentText"></textarea>
+					<button type="submit" class='btn btn-primary'>Submit</button>
+				</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
 </div>

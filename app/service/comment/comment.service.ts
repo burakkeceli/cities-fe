@@ -12,7 +12,10 @@ export class CommentService {
   getCommentsOfCity(cityId: string): Observable<string> {
     let uri = 'http://localhost:8081/cities/city/'+cityId+'/comment/';
     return this._http.get(uri)
-                    .map((res: Response) => res.json())
+                    .map((res: Response) => {
+                      console.log("comment " + res.json());
+                      return res.json();
+                    })
                     .catch(this.handleError);
   }
 

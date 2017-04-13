@@ -4,6 +4,8 @@ import { CitySearchService } from '../../service/city/city-search.service';
 import { CountrySearchService } from '../../service/country/country-search.service';
 import { CommentService } from '../../service/comment/comment.service';
 import { Subscription } from "rxjs";
+import { CityComment } from '../../model/comment/comment'
+import { User } from '../../model/user/user'
 
 @Component({
   moduleId: module.id,
@@ -15,8 +17,11 @@ export class CityGeneralComponent implements OnInit {
   private fetchedCity: any;
   private fetchedCountry: any = {};
   private isDataAvailable: boolean = false;
-  private cityComments: any;
+  private cityComments: CityComment;
+  private cityCommentList: [CityComment];
   private sub: any;
+  private currentUser: User;
+  private commentText: string;
 
   private errorMessage: string;
 
@@ -30,6 +35,10 @@ export class CityGeneralComponent implements OnInit {
       this.cityId = params['cityId'];
       console.log("city id " + this.cityId);
       this.getCityDetails(this.cityId);
+      let currentUser = localStorage.getItem('currentUser');
+      if (currentUser != null) {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      }
     });
   }
 
@@ -61,10 +70,21 @@ export class CityGeneralComponent implements OnInit {
     this.commentService.getCommentsOfCity(cityId)
       .subscribe(
       cityComments => {
-        this.cityComments = cityComments;
-        console.log(this.cityComments);
+        console.log("comments fetched : " + cityComments);
+        this.cityCommentList = JSON.parse(cityComments);
+        console.log("comments : " + this.cityComments);
       },
       error => this.errorMessage = <any>error
       );
+  }
+
+  addComment() {
+    console.log(this.currentUser + " " + this.fetchedCity.id + " " + this.commentText);
+    this.commentService.addCommentToCity(this.currentUser, this.fetchedCity.id, this.commentText)
+    .subscribe(
+      result => {
+        this.getComments(this.fetchedCity.id);
+      }
+    )
   }
 }

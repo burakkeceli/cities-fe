@@ -19,7 +19,10 @@ var CommentService = (function () {
     CommentService.prototype.getCommentsOfCity = function (cityId) {
         var uri = 'http://localhost:8081/cities/city/' + cityId + '/comment/';
         return this._http.get(uri)
-            .map(function (res) { return res.json(); })
+            .map(function (res) {
+            console.log("comment " + res.json());
+            return res.json();
+        })
             .catch(this.handleError);
     };
     CommentService.prototype.addCommentToCity = function (user, cityId, commentText) {
