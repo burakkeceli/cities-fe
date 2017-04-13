@@ -46,6 +46,8 @@ docs
 lib
 test
 tmp
+/**/*.js
+/**/*.js.map
 
 gulpfile.js
 gulpfile.js.map
