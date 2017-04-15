@@ -21,8 +21,7 @@ export class AuthenticationService {
             // login successful if there's a jwt token in the response
             let user = response.json();
             if (user && user.token) {
-                this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                localStorage.setItem('currentUser', this.currentUser);
+                localStorage.setItem('currentUser', JSON.stringify(user));
                 window.location.reload();
             }
         });

@@ -31,11 +31,7 @@ var CommentService = (function () {
         var options = new http_1.RequestOptions({ headers: headers });
         return this._http.post('http://localhost:8081/cities/city/' + cityId + '/comment', commentText, options)
             .map(function (response) {
-            var user = response.json();
-            if (user && user.token) {
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                window.location.reload();
-            }
+            console.log(response.json());
         });
     };
     CommentService.prototype.handleError = function (error) {

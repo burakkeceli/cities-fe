@@ -29,6 +29,7 @@ var CityGeneralComponent = (function () {
             console.log("city id " + _this.cityId);
             _this.getCityDetails(_this.cityId);
             var currentUser = localStorage.getItem('currentUser');
+            console.log("currentUser " + currentUser);
             if (currentUser != null) {
                 _this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
             }
@@ -56,9 +57,9 @@ var CityGeneralComponent = (function () {
         var _this = this;
         this.commentService.getCommentsOfCity(cityId)
             .subscribe(function (cityComments) {
-            console.log("comments fetched : " + cityComments);
-            _this.cityCommentList = JSON.parse(cityComments);
-            console.log("comments : " + _this.cityComments);
+            console.log("comments fetched : " + JSON.stringify(cityComments));
+            _this.cityCommentList = cityComments;
+            console.log("comment 1 : " + cityComments[0]);
         }, function (error) { return _this.errorMessage = error; });
     };
     CityGeneralComponent.prototype.addComment = function () {

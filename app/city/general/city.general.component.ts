@@ -18,7 +18,7 @@ export class CityGeneralComponent implements OnInit {
   private fetchedCountry: any = {};
   private isDataAvailable: boolean = false;
   private cityComments: CityComment;
-  private cityCommentList: [CityComment];
+  private cityCommentList: any;
   private sub: any;
   private currentUser: User;
   private commentText: string;
@@ -36,6 +36,7 @@ export class CityGeneralComponent implements OnInit {
       console.log("city id " + this.cityId);
       this.getCityDetails(this.cityId);
       let currentUser = localStorage.getItem('currentUser');
+      console.log("currentUser " + currentUser);
       if (currentUser != null) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       }
@@ -70,9 +71,9 @@ export class CityGeneralComponent implements OnInit {
     this.commentService.getCommentsOfCity(cityId)
       .subscribe(
       cityComments => {
-        console.log("comments fetched : " + cityComments);
-        this.cityCommentList = JSON.parse(cityComments);
-        console.log("comments : " + this.cityComments);
+        console.log("comments fetched : " + JSON.stringify(cityComments));
+        this.cityCommentList = cityComments;
+        console.log("comment 1 : " + cityComments[0]);
       },
       error => this.errorMessage = <any>error
       );

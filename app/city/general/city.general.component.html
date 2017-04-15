@@ -11,6 +11,14 @@
 	</div>
 
 	<div class="row">
+		<div class="panel-group" id="accordion">
+			<div *ngFor="let cityComment of cityCommentList">
+				{{cityComment.userName}}
+				{{cityComment.comment.text}}
+			</div>
+	</div>
+
+	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-6">
 			<div *ngIf="currentUser && fetchedCity.name">

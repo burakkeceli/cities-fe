@@ -16,7 +16,6 @@ var AuthenticationService = (function () {
         this._http = _http;
     }
     AuthenticationService.prototype.login = function (username, password) {
-        var _this = this;
         var body = JSON.stringify({ username: username, password: password });
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
@@ -25,8 +24,7 @@ var AuthenticationService = (function () {
             // login successful if there's a jwt token in the response
             var user = response.json();
             if (user && user.token) {
-                _this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                localStorage.setItem('currentUser', _this.currentUser);
+                localStorage.setItem('currentUser', JSON.stringify(user));
                 window.location.reload();
             }
         });

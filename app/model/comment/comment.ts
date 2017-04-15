@@ -8,4 +8,5 @@ export class CityComment {
 export class Comment {
     id: number;
     text: string;
+    createdTime: string;
 }
