@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import { Urls } from '../../constant/urls';
 // import 'rxjs/add/operator/do';  // for debugging
 
 /**
@@ -23,15 +24,15 @@ export class CitySearchService {
    * @return {string[]} The Observable for the HTTP request.
    */
   get(): Observable<string[]> {
-	console.log("burada");
-    this.cities = this._http.get('http://localhost:8081/cities/city')
+	console.log(Urls.URL_BASE + Urls.CITIES + Urls.CITY);
+    this.cities = this._http.get(Urls.URL_BASE + Urls.CITIES + Urls.CITY)
                     .map((res: Response) => res.json())
                     .catch(this.handleError);
     return this.cities;
   }
 
   getCity(cityId: string): Observable<string> {
-    let uri = 'http://localhost:8081/cities/city/'+cityId;
+    let uri = Urls.URL_BASE + Urls.CITIES + Urls.CITY+'/'+cityId;
     return this._http.get(uri)
                     .map((res: Response) => res.json())
                     .catch(this.handleError);

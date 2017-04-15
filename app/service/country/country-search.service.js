@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
+var urls_1 = require("../../constant/urls");
 /**
  * This class provides the CountrySearch service with methods to read names and add names.
  */
@@ -19,7 +20,7 @@ var CountrySearchService = (function () {
         this._http = _http;
     }
     CountrySearchService.prototype.getCountry = function (countryId) {
-        var uri = 'http://localhost:8081/cities/country/' + countryId;
+        var uri = urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.COUNTRY + '/' + countryId;
         return this._http.get(uri)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);

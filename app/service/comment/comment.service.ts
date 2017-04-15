@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../model/user';
+import { Urls } from '../../constant/urls';
 import 'rxjs/add/operator/map'
 
 @Injectable()
@@ -10,10 +11,11 @@ export class CommentService {
   constructor(private _http: Http) {}
 
   getCommentsOfCity(cityId: string): Observable<string> {
-    let uri = 'http://localhost:8081/cities/city/'+cityId+'/comment/';
+    let uri = Urls.URL_BASE + Urls.CITIES + Urls.CITY + '/' + cityId + Urls.COMMENT;
     return this._http.get(uri)
                     .map((res: Response) => {
-                      console.log("comment " + res.json());
+                      console.log("res.json() " + res.json());
+                      console.log("res " + res);
                       return res.json();
                     })
                     .catch(this.handleError);
@@ -24,10 +26,9 @@ export class CommentService {
     let headers = new Headers({ 'Content-Type': 'application/json', 'X-Auth-Token': user.token});
     let options = new RequestOptions({ headers: headers });
 
-    return this._http.post('http://localhost:8081/cities/city/'+cityId+'/comment', commentText, options)
-    .map((response: Response) => {
-        console.log(response.json());
-    });
+    return this._http.post(Urls.URL_BASE + Urls.CITIES + Urls.CITY + '/' + cityId + 
+                          Urls.COMMENT, commentText, options)
+                    .catch(this.handleError);
   }
   
   private handleError (error: any) {

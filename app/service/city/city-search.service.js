@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Rx_1 = require("rxjs/Rx");
+var urls_1 = require("../../constant/urls");
 // import 'rxjs/add/operator/do';  // for debugging
 /**
  * This class provides the CitySearch service with methods to read names and add names.
@@ -29,14 +30,14 @@ var CitySearchService = (function () {
      * @return {string[]} The Observable for the HTTP request.
      */
     CitySearchService.prototype.get = function () {
-        console.log("burada");
-        this.cities = this._http.get('http://localhost:8081/cities/city')
+        console.log(urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.CITY);
+        this.cities = this._http.get(urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.CITY)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
         return this.cities;
     };
     CitySearchService.prototype.getCity = function (cityId) {
-        var uri = 'http://localhost:8081/cities/city/' + cityId;
+        var uri = urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.CITY + '/' + cityId;
         return this._http.get(uri)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);

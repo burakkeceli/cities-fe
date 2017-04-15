@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var urls_1 = require("../../constant/urls");
 require("rxjs/add/operator/map");
 var AuthenticationService = (function () {
     function AuthenticationService(_http) {
@@ -19,7 +20,7 @@ var AuthenticationService = (function () {
         var body = JSON.stringify({ username: username, password: password });
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this._http.post('http://localhost:8081/cities/register', body, options)
+        return this._http.post(urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.REGISTER, body, options)
             .map(function (response) {
             // login successful if there's a jwt token in the response
             var user = response.json();

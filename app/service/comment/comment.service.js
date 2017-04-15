@@ -11,16 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
+var urls_1 = require("../../constant/urls");
 require("rxjs/add/operator/map");
 var CommentService = (function () {
     function CommentService(_http) {
         this._http = _http;
     }
     CommentService.prototype.getCommentsOfCity = function (cityId) {
-        var uri = 'http://localhost:8081/cities/city/' + cityId + '/comment/';
+        var uri = urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.CITY + '/' + cityId + urls_1.Urls.COMMENT;
         return this._http.get(uri)
             .map(function (res) {
-            console.log("comment " + res.json());
+            console.log("res.json() " + res.json());
+            console.log("res " + res);
             return res.json();
         })
             .catch(this.handleError);
@@ -29,10 +31,9 @@ var CommentService = (function () {
         localStorage.getItem;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json', 'X-Auth-Token': user.token });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this._http.post('http://localhost:8081/cities/city/' + cityId + '/comment', commentText, options)
-            .map(function (response) {
-            console.log(response.json());
-        });
+        return this._http.post(urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.CITY + '/' + cityId +
+            urls_1.Urls.COMMENT, commentText, options)
+            .catch(this.handleError);
     };
     CommentService.prototype.handleError = function (error) {
         var errMsg = (error.message) ? error.message :
