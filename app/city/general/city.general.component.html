@@ -1,8 +1,7 @@
 <div *ngIf="isDataAvailable">
 	<div class="row">
 	<div class="col-md-4">
-		<p><strong>City name</strong> : {{fetchedCity.name}}</p>
-		<p><strong>Country id</strong> : {{fetchedCity.countryId}}</p>
+		<h1>{{fetchedCity.name}}</h1>
 	</div>
 	<div class="col-md-6"></div>
 	<div class="col-md-2">
@@ -10,13 +9,30 @@
 	</div>
 	</div>
 
-	<div class="row">
-		<div class="panel-group" id="accordion">
-			<div *ngFor="let cityComment of cityCommentList">
-				{{cityComment.userName}}
-				{{cityComment.comment.text}}
-			</div>
-	</div>
+    <div class="row">
+        <div class="comments-container">
+            <ul id="comments-list" class="comments-list">
+                <div *ngFor="let cityComment of cityCommentList">
+                <li>
+                    <div class="comment-main-level">
+                        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">{{cityComment.userName}}</a></h6>
+                                <span>hace 20 minutos</span>
+                                <i class="fa fa-reply"></i>
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="comment-content">
+                                {{cityComment.comment.text}}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                </div>
+            </ul>
+        </div>
+    </div>
 
 	<div class="row">
 		<div class="col-md-4"></div>
@@ -31,5 +47,87 @@
 			</div>
 		</div>
 		<div class="col-md-2"></div>
+	</div>
+
+	<div class="row">
+    <div class="comments-container">
+        <h1>Comentarios <a href="http://creaticode.com">creaticode.com</a></h1>
+
+        <ul id="comments-list" class="comments-list">
+            <li>
+                <div class="comment-main-level">
+                    <!-- Avatar -->
+                    <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                    <!-- Contenedor del Comentario -->
+                    <div class="comment-box">
+                        <div class="comment-head">
+                            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+                            <span>hace 20 minutos</span>
+                            <i class="fa fa-reply"></i>
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <div class="comment-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                        </div>
+                    </div>
+                </div>
+                <!-- Respuestas de los comentarios -->
+                <ul class="comments-list reply-list">
+                    <li>
+                        <!-- Avatar -->
+                        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                        <!-- Contenedor del Comentario -->
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+                                <span>hace 10 minutos</span>
+                                <i class="fa fa-reply"></i>
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="comment-content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <!-- Avatar -->
+                        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                        <!-- Contenedor del Comentario -->
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+                                <span>hace 10 minutos</span>
+                                <i class="fa fa-reply"></i>
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="comment-content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <div class="comment-main-level">
+                    <!-- Avatar -->
+                    <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                    <!-- Contenedor del Comentario -->
+                    <div class="comment-box">
+                        <div class="comment-head">
+                            <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+                            <span>hace 10 minutos</span>
+                            <i class="fa fa-reply"></i>
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <div class="comment-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 	</div>
 </div>

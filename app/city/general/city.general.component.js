@@ -77,6 +77,7 @@ CityGeneralComponent = __decorate([
         moduleId: module.id,
         selector: 'cities-city-general',
         templateUrl: 'city.general.component.html',
+        styleUrls: ['city.component.css'],
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
         city_search_service_1.CitySearchService,

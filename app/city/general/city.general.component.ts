@@ -11,6 +11,7 @@ import { User } from '../../model/user/user'
   moduleId: module.id,
   selector: 'cities-city-general',
   templateUrl: 'city.general.component.html',
+  styleUrls: ['city.component.css'],
 })
 export class CityGeneralComponent implements OnInit {
   private cityId: string;
