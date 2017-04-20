@@ -11,16 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
-var urls_1 = require("../../constant/urls");
+var constant_service_1 = require("../constant/constant.service");
 /**
  * This class provides the CountrySearch service with methods to read names and add names.
  */
 var CountrySearchService = (function () {
-    function CountrySearchService(_http) {
+    function CountrySearchService(_http, ConstantService) {
         this._http = _http;
+        this.ConstantService = ConstantService;
     }
     CountrySearchService.prototype.getCountry = function (countryId) {
-        var uri = urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.COUNTRY + '/' + countryId;
+        var uri = this.ConstantService.URL_BASE +
+            this.ConstantService.CITIES +
+            this.ConstantService.COUNTRY + '/' + countryId;
         return this._http.get(uri)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
@@ -37,7 +40,7 @@ var CountrySearchService = (function () {
 }());
 CountrySearchService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, constant_service_1.ConstantService])
 ], CountrySearchService);
 exports.CountrySearchService = CountrySearchService;
 //# sourceMappingURL=country-search.service.js.map

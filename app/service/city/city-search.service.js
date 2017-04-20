@@ -11,33 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Rx_1 = require("rxjs/Rx");
-var urls_1 = require("../../constant/urls");
-// import 'rxjs/add/operator/do';  // for debugging
+var constant_service_1 = require("../constant/constant.service");
 /**
  * This class provides the CitySearch service with methods to read names and add names.
  */
 var CitySearchService = (function () {
-    /**
-     * Creates a new CitySearchService with the injected Http.
-     * @param {Http} http - The injected Http.
-     * @constructor
-     */
-    function CitySearchService(_http) {
+    function CitySearchService(_http, ConstantService) {
         this._http = _http;
+        this.ConstantService = ConstantService;
     }
-    /**
-     * Returns an Observable for the HTTP GET request for the JSON resource.
-     * @return {string[]} The Observable for the HTTP request.
-     */
     CitySearchService.prototype.get = function () {
-        console.log(urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.CITY);
-        this.cities = this._http.get(urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.CITY)
+        var url = this.ConstantService.URL_BASE + this.ConstantService.CITIES + this.ConstantService.CITY;
+        this.cities = this._http.get(url)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
         return this.cities;
     };
     CitySearchService.prototype.getCity = function (cityId) {
-        var uri = urls_1.Urls.URL_BASE + urls_1.Urls.CITIES + urls_1.Urls.CITY + '/' + cityId;
+        var url = this.ConstantService.URL_BASE + this.ConstantService.CITIES + this.ConstantService.CITY;
+        var uri = url + '/' + cityId;
         return this._http.get(uri)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
@@ -57,7 +49,7 @@ var CitySearchService = (function () {
 }());
 CitySearchService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, constant_service_1.ConstantService])
 ], CitySearchService);
 exports.CitySearchService = CitySearchService;
 //# sourceMappingURL=city-search.service.js.map

@@ -22,6 +22,7 @@ var home_component_1 = require("./home/home.component");
 var login_component_1 = require("./login/login.component");
 var sidebar_component_1 = require("./sidebar/sidebar.component");
 var city_search_service_1 = require("./service/city/city-search.service");
+var constant_service_1 = require("./service/constant/constant.service");
 var authentication_service_1 = require("./service/authentication/authentication.service");
 var country_search_service_1 = require("./service/country/country-search.service");
 var comment_service_1 = require("./service/comment/comment.service");
@@ -56,7 +57,8 @@ AppModule = __decorate([
             city_search_service_1.CitySearchService,
             authentication_service_1.AuthenticationService,
             country_search_service_1.CountrySearchService,
-            comment_service_1.CommentService
+            comment_service_1.CommentService,
+            constant_service_1.ConstantService
         ],
         bootstrap: [app_component_1.AppComponent],
         exports: []

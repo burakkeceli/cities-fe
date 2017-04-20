@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Urls } from '../../constant/urls';
+import { ConstantService } from '../constant/constant.service';
 
 /**
  * This class provides the CountrySearch service with methods to read names and add names.
@@ -9,10 +9,12 @@ import { Urls } from '../../constant/urls';
 @Injectable()
 export class CountrySearchService {
 
-  constructor(private _http: Http) {}
+  constructor(private _http: Http, private ConstantService: ConstantService) {}
 
   getCountry(countryId: string): Observable<string> {
-    let uri = Urls.URL_BASE + Urls.CITIES + Urls.COUNTRY + '/' + countryId;
+    let uri = this.ConstantService.URL_BASE + 
+              this.ConstantService.CITIES + 
+              this.ConstantService.COUNTRY + '/' + countryId;
     return this._http.get(uri)
                     .map((res: Response) => res.json())
                     .catch(this.handleError);

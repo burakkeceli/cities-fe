@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component'
 import { LoginComponent } from './login/login.component'
 import { SidebarComponent } from './sidebar/sidebar.component'
 import { CitySearchService } from './service/city/city-search.service';
+import { ConstantService } from './service/constant/constant.service';
 import { AuthenticationService } from './service/authentication/authentication.service';
 import { CountrySearchService } from './service/country/country-search.service';
 import { CommentService } from './service/comment/comment.service';
@@ -46,7 +47,8 @@ import { CommentService } from './service/comment/comment.service';
       CitySearchService, 
       AuthenticationService,
       CountrySearchService,
-      CommentService
+      CommentService,
+      ConstantService
     ],
   bootstrap: [AppComponent],
   exports: []
