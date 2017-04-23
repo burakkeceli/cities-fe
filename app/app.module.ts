@@ -21,6 +21,7 @@ import { ConstantService } from './service/constant/constant.service';
 import { AuthenticationService } from './service/authentication/authentication.service';
 import { CountrySearchService } from './service/country/country-search.service';
 import { CommentService } from './service/comment/comment.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CommentService } from './service/comment/comment.service';
     TabsModule.forRoot()
   ],
   providers: [
-      {provide: APP_BASE_HREF, useValue : '/'}, 
+      {provide: APP_BASE_HREF, useValue : '/'},
+      {provide: LocationStrategy, useClass: HashLocationStrategy},
       CitySearchService, 
       AuthenticationService,
       CountrySearchService,

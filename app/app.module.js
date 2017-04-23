@@ -26,6 +26,7 @@ var constant_service_1 = require("./service/constant/constant.service");
 var authentication_service_1 = require("./service/authentication/authentication.service");
 var country_search_service_1 = require("./service/country/country-search.service");
 var comment_service_1 = require("./service/comment/comment.service");
+var common_2 = require("@angular/common");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -54,6 +55,7 @@ AppModule = __decorate([
         ],
         providers: [
             { provide: common_1.APP_BASE_HREF, useValue: '/' },
+            { provide: common_2.LocationStrategy, useClass: common_2.HashLocationStrategy },
             city_search_service_1.CitySearchService,
             authentication_service_1.AuthenticationService,
             country_search_service_1.CountrySearchService,
