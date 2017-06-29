@@ -32,6 +32,19 @@ var AuthenticationService = (function () {
             }
         });
     };
+    AuthenticationService.prototype.isTokenExpired = function (token) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json', 'X-Auth-Token': token });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.get(this.ConstantService.URL_BASE +
+            this.ConstantService.CITIES +
+            this.ConstantService.LOGIN +
+            this.ConstantService.IS_TOKEN_EXPIRED)
+            .map(function (res) { return res; });
+        //.subscribe((res: Response) => res, err => {
+        //    console.log('ERROR');
+        //    //localStorage.removeItem("currentUser");
+        //})
+    };
     AuthenticationService.prototype.logout = function () {
         localStorage.removeItem('currentUser');
     };
