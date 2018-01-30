@@ -11,7 +11,7 @@ REGISTER : string;
 COUNTRY : string;
 
 constructor() {
-    this.URL_BASE = 'http://localhost:8081';
+    this.URL_BASE = 'http://localhost:83';
     this.CITIES = '/cities';
     this.CITY = '/city';
     this.COMMENT = '/comment';
